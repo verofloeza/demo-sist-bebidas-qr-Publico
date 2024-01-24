@@ -8,7 +8,7 @@ import { db } from '../../data/firebase/firebase';
 import { getOrder } from '../../redux/actions/order.actions';
 
 const GenerateQr = ({email}) => {
-    const [url, setUrl] = useState(`https://localhost:3001/qr/Evento1/${email}`);
+    const [url, setUrl] = useState(`https://demo-sist-bebidas-qr-admin.vercel.app/qr/Evento1/${email}`);
     const qrRef = useRef();
 
     useEffect(() =>{
