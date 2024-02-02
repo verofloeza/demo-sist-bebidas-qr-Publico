@@ -10,45 +10,70 @@ import Products from '../componentProducts/Products';
 import Sticky from '../componentProducts/sticky';
 import { db } from '../../data/firebase/firebase';
 import {getDrink} from '../../redux/actions/drinks.actions';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Barra = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
+  const { evento } = useParams();
   const data = useSelector((content) => content.drinks.drinks);
-  const [ evento, setEvento ] = useState(true)
+  const [ event, setEvent ] = useState(true)
+  const [ drinks, setDrinks ] =  useState([])
   
   useEffect(() => {
      dispatch(getDrink());
-     getEventos()
-  }, []);
+     if(data.lenght !== 0){
+        getEventos();
+     }
+
+  }, [dispatch, data]);
 
   const getEventos = async () => {
     
-    const querySnapshot = await getDocs(query(collection(db, "events"), where( "event", "==", "Evento 1" )));
+    const querySnapshot = await getDocs(query(collection(db, "events"), where( "slug", "==", evento )));
     querySnapshot.forEach((doc) => {
-      console.log(doc.data().isActive)
-      setEvento(doc.data().isActive)
+      
+      setEvent(doc.data().active)
+      const prevDrinks = doc.data().drinks;
+      setDrinks(() => {
+        const updatedDrinks = prevDrinks.map((drink) => {
+          const firebaseData = data.find((item) => item.id === drink.id);
+  
+          if (firebaseData) {
+            return {
+              ...drink,
+              image: firebaseData.image,
+              title: firebaseData.title,
+            };
+          }
+          return drink;
+        });
+  
+        return updatedDrinks;
+      });
+      
     });
     
+    
   }
-  console.log(evento)
     return (
         <Fragment>
           <div style={{width: '100%', height: 50}}></div>
           <Breadcrumb parent="Bebidas" title="Bebidas" />
 
           {
-            evento === true
+            event === true
             ? <div>
               <Container fluid={true} className="product-wrapper" style={{marginBottom: 80}}>
                 <div className="product-grid">
     
                   <div className="product-wrapper-grid" >
                       <Row className="gridRow">
-                        {data
-                          ? data.map((item, i) => (
-                              <Products item={item} i={i} key={i} />
+                        {drinks
+                          ? drinks.map((item, i) => (
+                              item.active === true ?
+                                <Products item={item} i={i} key={i} />
+                                : ''
                             ))
                           : ""}
                       </Row>

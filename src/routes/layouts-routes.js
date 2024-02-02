@@ -9,7 +9,7 @@ import React from "react";
 import Soporte from "../component/barra/soporte";
 
 export const routes = [
-    { path:`${process.env.PUBLIC_URL}/bebidas/bebidas`, Component: <Barra/> }, 
+    { path:`${process.env.PUBLIC_URL}/bebidas/:evento`, Component: <Barra/> }, 
     { path:`${process.env.PUBLIC_URL}/bebidas/bebidasDetalle/:id`, Component: <Productpage/> }, 
     { path:`${process.env.PUBLIC_URL}/carrito`, Component: <Cart/> },
     { path:`${process.env.PUBLIC_URL}/checkout`, Component: <Checkout/> },

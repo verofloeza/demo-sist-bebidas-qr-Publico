@@ -14,7 +14,7 @@ const MainRoutes = () => {
             <Route element={<AppLayout />} key={i}>
                 <Route exact
                   path={`${process.env.PUBLIC_URL}`}
-                  element={<Navigate to={`${process.env.PUBLIC_URL}/bebidas/bebidas`} />}
+                  element={<Navigate to={`${process.env.PUBLIC_URL}/bebidas/:evento`} />}
                 />
               <Route path={path} element={Component} />
             </Route>

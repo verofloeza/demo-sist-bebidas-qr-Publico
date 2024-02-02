@@ -24,7 +24,7 @@ const  Soporte = () => {
     const [ message, setMessage ] = useState('');
 
     const enviar = ()=>{
-        fetch('https://clubmasiva.com.ar/sistema/mails/enviarSoporte.php?name=' + name + '&email='+ email + '&phone='+ phone + '&message=' + message )
+        fetch('https://fusionapps.com.ar/SistBeb/mail/enviarSoporte.php?name=' + name + '&email='+ email + '&phone='+ phone + '&message=' + message )
             .then((mensaje) =>{
                 console.log(mensaje)
                 console.log('correo enviado')
@@ -50,7 +50,7 @@ const  Soporte = () => {
             <div style={{width: '100%', height: 50}}></div>
             </Col>
             <Col>
-                <h6>Si tuvistes algun problema, envianos un email a <Link to={`mailto:soporte@clubmasiva.com.ar`}>soporte@clubmasiva.com.ar</Link></h6>
+                <h6>Si tuvistes algun problema, envianos un email a <Link to={`mailto:info@fusionapps.com.ar`}>info@fusionapps.com.ar</Link></h6>
             </Col>
             
         </Row>
