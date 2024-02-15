@@ -12,7 +12,7 @@ export const routes = [
     { path:`${process.env.PUBLIC_URL}/bebidas/:evento`, Component: <Barra/> }, 
     { path:`${process.env.PUBLIC_URL}/bebidas/bebidasDetalle/:id`, Component: <Productpage/> }, 
     { path:`${process.env.PUBLIC_URL}/carrito`, Component: <Cart/> },
-    { path:`${process.env.PUBLIC_URL}/checkout`, Component: <Checkout/> },
+    { path:`${process.env.PUBLIC_URL}/checkout/:evento`, Component: <Checkout/> },
     { path:`${process.env.PUBLIC_URL}/qr/:evento/:email`, Component: <Qr/> },
     { path:`${process.env.PUBLIC_URL}/pagos/:condition/:email/:id`, Component: <Pagos/> },
     { path:`${process.env.PUBLIC_URL}/pedidos`, Component: <Pedidos/> },

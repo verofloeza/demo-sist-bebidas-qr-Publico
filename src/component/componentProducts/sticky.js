@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import ModalLogin from './ModalLogin';
 import SweetAlert from "sweetalert2";
-import { Trash } from 'react-feather';
 import { canceleCart } from '../../redux/actions/cart.actions';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Sticky = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
+  const { evento } = useParams();
   const productosCart = useSelector(state => state.Cartdata)
   const [ cantProduct, setCantProduct ] = useState(0);
   const [ total, setTotal ] = useState(0);
@@ -39,12 +39,12 @@ useEffect(() => {
   const toggle = () => setModal(!modal);
 
   const buyProduct = () => {
-    history(`/checkout`);
+    history(`/checkout/${evento}`);
   };
 
   const cancelarCompra = () =>{
     dispatch(canceleCart())
-    history('../../bebidas/bebidas')
+    history(`../../bebidas/${evento}`)
   }
 
   const Displayalert = () => {

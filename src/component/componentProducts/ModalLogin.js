@@ -8,11 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Container } from 'react-trello';
 import { ModalTitle } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ModalLogin = ({modal, toggle, header}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
+    const { evento } = useParams();
     const userF = useSelector((state) => state.login.user)
     const [user, setUser] = useState(null);
     const [email, setEmail] = useState('');
@@ -20,9 +21,10 @@ const ModalLogin = ({modal, toggle, header}) => {
     const [ phone, setPhone ] = useState('');
     const [ name, setName ] = useState('');
     const [ cartId, setCartId] = useState(null);
+    const [ dataEvent, setDataEvent ] = useState([]);
 
     useEffect(()=>{
-        
+          getDataEventos();
            const checkFirebaseAuth = () => {
             const unsubscribe = auth.onAuthStateChanged((user) => {
 
@@ -37,7 +39,21 @@ const ModalLogin = ({modal, toggle, header}) => {
             checkFirebaseAuth();
      
                 
-      },[])
+      },[dispatch])
+
+      const getDataEventos = async () => {
+        const info = [];
+        const querySnapshot = await getDocs(query(collection(db, "events"), where("slug", "==", evento)));
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          info.push({
+            title: data.event,
+            date: data.date
+          });
+        });
+        
+        setDataEvent(info);
+      }
 
       function handleSignIn() {
         const provider = new GoogleAuthProvider();
@@ -59,18 +75,10 @@ const ModalLogin = ({modal, toggle, header}) => {
       }
       
       const buyProduct = () => {
-        history(`/checkout`);
+        history(`/checkout/${evento}`);
       };
 
       const handleSignInPass = async () => {
-        const data = {
-          name: name,
-          email: email,
-          phone: phone,
-          role: 'cliente',
-          isActive: true
-        }
-
         try {
           await createUserWithEmailAndPassword(auth, email, password);
            dispatch(signup(name, phone, email))
@@ -97,8 +105,8 @@ const ModalLogin = ({modal, toggle, header}) => {
           },
           date: new Date(),
           isActive: true,
-          event: 'JR. Recital',
-          dateEvent: new Date('2023-05-27'),
+          event: dataEvent.map(event => event.title),
+          dateEvent: dataEvent.map(event => event.date),
           qr: null
         }
         const q = query(userRef, where('user.email', '==', email), orderBy('date', 'desc'), limit(1));
@@ -110,11 +118,7 @@ const ModalLogin = ({modal, toggle, header}) => {
                       
                     } else {
                       const lastOrder = querySnapshot.docs[0];
-                      const lastOrderData = lastOrder.data();
-                      
                       setCartId(lastOrder.id)
-                      
-                      
                     }
                   } catch (error) {
                     console.error('Error al consultar los documentos:', error);

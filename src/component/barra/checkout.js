@@ -7,20 +7,17 @@ import {
   Container,
   Form,
   FormGroup,
-  Input,
   Label,
   Row,
 } from "reactstrap";
-import { Link, useNavigate } from "react-router-dom";
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import { Timestamp, addDoc, collection, doc, getDocs, limit, orderBy, query, updateDoc, where } from "firebase/firestore";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from "../../data/firebase/firebase";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useDispatch, useSelector } from "react-redux";
 
 import Breadcrumb from "../common/breadcrumb/breadcrumb";
 import GenerateQr from "../componentProducts/generateQr";
-import { QRCodeCanvas } from "qrcode.react"
 import SweetAlert from "sweetalert2";
 import { canceleCart } from "../../redux/actions/cart.actions";
 import { updateUser } from "../../redux/actions/login.actions";
@@ -28,11 +25,13 @@ import { updateUser } from "../../redux/actions/login.actions";
 const Checkout = () => {
   const history = useNavigate()
   const dispatch = useDispatch();
+  const { evento } = useParams();
   const userF = useSelector((state) => state.login.user)
   const [ nombre, setNombre ] = useState("");
   const [ tel, setTel ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ qr, setQr] = useState(null)
+  const [ dataEvent, setDataEvent ] = useState([]);
 
   useEffect(()=>{
     setNombre(userF.name)
@@ -42,7 +41,7 @@ const Checkout = () => {
  
   },[userF])
   useEffect(()=>{
-        
+      getDataEventos();
     const checkFirebaseAuth = () => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -75,7 +74,19 @@ const Checkout = () => {
     return total;
   };
 
- 
+  const getDataEventos = async () => {
+    const info = [];
+    const querySnapshot = await getDocs(query(collection(db, "events"), where("slug", "==", evento)));
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      info.push({
+        title: data.event,
+        date: data.date
+      });
+    });
+    
+    setDataEvent(info);
+  }
 
   const crearPago = async () => {
     if (nombre !== "" && tel  !== "" && email !== "" ) {
@@ -92,8 +103,8 @@ const Checkout = () => {
                 total: getCartTotal(cart),
                 date: new Date(),
                 isActive: true,
-                event: 'Evento 1',
-                dateEvent: new Date('2023-05-27'),
+                event: dataEvent.map(event => event.title),
+                dateEvent: dataEvent.map(event => event.date),
                 qr: null
               };
               const productList = cart || [];
@@ -112,9 +123,9 @@ const Checkout = () => {
                     }
                   ],
                   "back_urls": {
-                    "success": `http://localhost:3001/pagos/pago-exitoso/${email}/${docRef.id}`,
-                    "failure": `http://localhost:3001/pagos/pago-fallido/${email}/${docRef.id}`,
-                    "pending": `http://localhost:3001/pagos/pago-pendiente/${email}/${docRef.id}`
+                    "success": `http://localhost:3000/pagos/pago-exitoso/${email}/${docRef.id}`,
+                    "failure": `http://localhost:3000/pagos/pago-fallido/${email}/${docRef.id}`,
+                    "pending": `http://localhost:3000/pagos/pago-pendiente/${email}/${docRef.id}`
                   },
                   "auto_return": "approved"
                 };
@@ -159,7 +170,7 @@ const Checkout = () => {
 
     const cancelarCompra = () =>{
       dispatch(canceleCart())
-      history('../bebidas/bebidas')
+      history(`../bebidas/${evento}`)
     }
 
     
