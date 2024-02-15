@@ -123,9 +123,9 @@ const Checkout = () => {
                     }
                   ],
                   "back_urls": {
-                    "success": `http://localhost:3000/pagos/pago-exitoso/${email}/${docRef.id}`,
-                    "failure": `http://localhost:3000/pagos/pago-fallido/${email}/${docRef.id}`,
-                    "pending": `http://localhost:3000/pagos/pago-pendiente/${email}/${docRef.id}`
+                    "success": `https://demo-sist-bebidas-qr-publico.vercel.app/pagos/${evento}/pago-exitoso/${email}/${docRef.id}`,
+                    "failure": `https://demo-sist-bebidas-qr-publico.vercel.app/pagos/${evento}/pago-fallido/${email}/${docRef.id}`,
+                    "pending": `https://demo-sist-bebidas-qr-publico.vercel.app/pagos/${evento}/pago-pendiente/${email}/${docRef.id}`
                   },
                   "auto_return": "approved"
                 };
