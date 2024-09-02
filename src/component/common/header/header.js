@@ -11,8 +11,10 @@ import ModalRegistroHead from '../../componentProducts/ModalRegistroHead';
 import { auth } from "../../../data/firebase/firebase";
 import { signup } from "../../../redux/actions/login.actions";
 import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom';
 
 const Header = (props) => {
+    const { evento } = useParams();
     const dispatch = useDispatch();
     const [navmenu,setNavmenu] = useState(false)
     const [modal, setModal] = useState(false);
@@ -79,13 +81,21 @@ const Header = (props) => {
         <div className="page-main-header">
         <div className="main-header-right">
           <div className="main-header-left text-center">
-            <div className="logo-wrapper"><Link to="/bebidas/bebidas"><img src={require("../../../assets/images/logo/logo-sist-bebidas.png")} alt="Club Masiva" width='70'/></Link></div>
+            <div className="logo-wrapper">
+              <Link to={`/bebidas/${evento}`}>
+                <img 
+                  src={require("../../../assets/images/logo/logo-sist-bebidas.png")} 
+                  alt="Sistema de bebidas" 
+                  width='50'
+                  />
+                </Link>
+              </div>
           </div>
           <div className="nav-right col pull-right right-menu">
             <ul className="nav-menus">
               <li></li>
               <li style={{fontSize: '20px'}}>
-                <Link to="/bebidas/bebidas" style={{color: 'white'}}>
+                <Link to={`/bebidas/${evento}`} style={{color: 'white'}}>
                   <i className="fa fa-shopping-basket"></i> Tienda
                 </Link>
               </li>
