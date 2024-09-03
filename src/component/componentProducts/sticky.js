@@ -72,7 +72,7 @@ useEffect(() => {
           <Col>
             <Card 
               style={{
-                  minHeight: 50,
+                  minHeight: 20,
                   marginBottom: 0,
                   paddingTop: 15,
                   maxWidth: 400,
@@ -86,8 +86,17 @@ useEffect(() => {
                   backgroundColor: '#6f42c1' 
                 }} >
               <Container>
-                <Row>
-                  <Col sm='12'>
+                <Row className="d-flex align-items-center justify-content-between">
+                <Col xs="auto" className="text-center">
+                  <Button
+                          color="primary"
+                          onClick={Displayalert}
+                          className='button-stiky'
+                        >
+                          <i className="fa fa-trash"></i>
+                      </Button>
+                  </Col>
+                  <Col className="d-flex justify-content-center text-white">
                     <Container>
                       <Row>
                         <Col style={{textAlign: 'center', color: 'white'}}>
@@ -100,25 +109,15 @@ useEffect(() => {
                     </Container>
                     
                   </Col>
-                  <Col className='text-end' style={{marginTop:10, marginBottom:10}}>
-                  <Button
-                          color="primary"
-                          className="m-l-10"
-                          onClick={Displayalert}
-                          style={{marginTop: -8}}
-                        >
-                          Vaciar
-                      </Button>
-                  </Col>
-                   <Col className='text-start' style={{marginTop:10, marginBottom:10}}>
+                  
+                   <Col xs="auto" className="text-center">
                     <Button
                         color="primary"
-                        className="m-r-10"
                         onClick={ userF.name ? buyProduct : toggle}
                         disabled={ total !== 0 ? false : true }
-                        style={{marginTop: -8}}
+                          className='button-stiky'
                       >
-                        Comprar
+                        <i className="fa fa-arrow-right"></i>
                       </Button>
                     </Col>
                 </Row>

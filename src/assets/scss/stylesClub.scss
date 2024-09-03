@@ -26,7 +26,20 @@
     padding-bottom: 10px;
 }
 
+.button-stiky{
+    margin-top: -12px;
+    padding: 4px 8px;
+    font-size: 16px;    
+    height: 30px;
+}
+
 @media screen and (max-width: 767px) {
+    .logo-text{
+        font-size: 20px;
+    }
+    .nav-menus ul li{
+        font-size: 18px;
+    }
     .buttonMenu{
         margin-top: 5px;
     }
@@ -34,6 +47,8 @@
         font-size: 18px !important;
         text-align: center !important;
     }
+    .page-wrapper .page-body-wrapper .page-header{
+        padding-top: 50px !important;
+    }
     
-     
 }
