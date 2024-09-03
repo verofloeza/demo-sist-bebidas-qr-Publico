@@ -88,18 +88,19 @@ const Header = (props) => {
                   alt="Sistema de bebidas" 
                   width='50'
                   />
+                  <span className="logo-text">Bebidas</span>
                 </Link>
               </div>
           </div>
           <div className="nav-right col pull-right right-menu">
             <ul className="nav-menus">
               <li></li>
-              <li style={{fontSize: '20px'}}>
+              <li>
                 <Link to={`/bebidas/${evento}`} style={{color: 'white'}}>
                   <i className="fa fa-shopping-basket"></i> Tienda
                 </Link>
               </li>
-              <li style={{fontSize: '20px'}}>
+              <li>
                 <Link to="/pedidos" style={{color: 'white'}}>
                   <i className="fa fa-file-text-o"></i> Pedidos
                 </Link>
@@ -126,10 +127,10 @@ const Header = (props) => {
                           </li>
                         ) : (
                           <div>
-                            <li>
+                            <li className="buttonMenu">
                               <button onClick={toggleIn} className="pull-left btn btn-primary">Iniciar sesión</button>
                             </li>
-                            <li>
+                            <li className="buttonMenu">
                               <button onClick={toggle} className="pull-left btn btn-primary">Registrarme</button> 
                             </li>
                           </div>

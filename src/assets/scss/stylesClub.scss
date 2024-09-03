@@ -4,3 +4,32 @@
 .page-main-header .main-header-right .nav-right > ul > li:first-child{
     width: auto !important;
 }
+.product-price{ 
+    color: white !important;
+}
+.logo-text{
+    color: white !important;
+    font-size: 24px;
+    margin-left: 15px;
+    font-weight: bold;
+    padding-top: 15px;
+}
+.nav-menus ul li{
+    font-size: 20px;
+}
+
+.buttonMenu{
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .buttonMenu{
+        margin-top: 5px;
+    }
+    .nav-menus ul li, .nav-menus ul li i{
+        font-size: 18px !important;
+        text-align: center !important;
+    }
+    
+     
+}
