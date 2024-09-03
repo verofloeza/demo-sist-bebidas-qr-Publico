@@ -51,7 +51,7 @@ const Qr = () => {
     <Container fluid={true} className="tables-wrapper">
         <Row>
           <Col sm="12">
-          <div style={{width: '100%', height: 50}}></div>
+          <div style={{width: '100%', height: 10}}></div>
           </Col>
           <Col sm="12">
              {ordenes.length > 0

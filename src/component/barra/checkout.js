@@ -177,7 +177,7 @@ const Checkout = () => {
 
   return (
     <Fragment>
-      <div style={{width: '100%', height: 50}}></div>
+      <div style={{width: '100%', height: 10}}></div>
       <Breadcrumb parent="Apps / ECommerce" title="Checkout" />
       <Container fluid={true}>
         <Row>

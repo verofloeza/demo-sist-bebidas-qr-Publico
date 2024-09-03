@@ -47,7 +47,7 @@ const  Soporte = () => {
       <Container>
         <Row>
             <Col sm="12">
-            <div style={{width: '100%', height: 50}}></div>
+            <div style={{width: '100%', height: 10}}></div>
             </Col>
             <Col>
                 <h6>Si tuvistes algun problema, envianos un email a <Link to={`mailto:info@fusionapps.com.ar`}>info@fusionapps.com.ar</Link></h6>

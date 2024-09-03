@@ -57,7 +57,7 @@ const Pagos = () => {
             const storage = getStorage();
 
             // Especifica la ruta de la imagen en el almacenamiento
-            const imagePath = `qr/Evento1/${email}.png`;
+            const imagePath = `qr/Evento5/${email}.png`;
 
             // Crea una referencia a la imagen en el almacenamiento
             const imageRef = ref(storage, imagePath);
@@ -122,7 +122,7 @@ const Pagos = () => {
 
   return (
     <Fragment>
-      <div style={{width: '100%', height: 50}}></div>
+      <div style={{width: '100%', height: 10}}></div>
       <Container>
         <Row>
             <Col>

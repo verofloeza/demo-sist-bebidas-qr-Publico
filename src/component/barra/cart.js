@@ -35,7 +35,7 @@ const Cart = (props) => {
 
   return (
     <Fragment>
-      <div style={{width: '100%', height: 50}}></div>
+      <div style={{width: '100%', height: 10}}></div>
       <Breadcrumb parent="Carrito" title="Cart" />
       {cart ? (
         <Container fluid={true}>

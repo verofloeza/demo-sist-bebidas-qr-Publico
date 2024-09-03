@@ -88,7 +88,7 @@ const Header = (props) => {
                   alt="Sistema de bebidas" 
                   width='50'
                   />
-                  <span className="logo-text">Bebidas</span>
+                  <span className="logo-text">Beverage Store</span>
                 </Link>
               </div>
           </div>

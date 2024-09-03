@@ -33,7 +33,7 @@ const Productpage = () => {
   };
   return (
     <Fragment>
-      <div style={{width: '100%', height: 50}}></div>
+      <div style={{width: '100%', height: 10}}></div>
       <Breadcrumb parent="Detalle de Bebidas" title="Detalle de Bebidas" />
       <Container fluid={true}>
         <Row>

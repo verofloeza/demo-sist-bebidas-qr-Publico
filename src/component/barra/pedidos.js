@@ -87,7 +87,7 @@ const Pedidos = () => {
   }
   return (
     <Fragment>
-      <div style={{width: '100%', height: 50}}></div>
+      <div style={{width: '100%', height: 10}}></div>
       <Container fluid={true} className="tables-wrapper">
         <Row>
           <Col sm="12">
