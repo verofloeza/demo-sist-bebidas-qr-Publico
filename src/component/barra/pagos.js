@@ -139,10 +139,10 @@ const Pagos = () => {
                             <Col sm='12' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
                               <img className='files-gallery-item img-fluid' alt="img" src={qr} width={200} />
                             </Col>
-                            <Col sm='12' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+                            <Col sm='12' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '15px',}} >
                               <Link 
                                 className="cart-btn-transform btn btn-primary"
-                                to={`http://localhost:3001/qr/Evento1/${email}`}
+                                to={`https://demo-sist-bebidas-qr-publico.vercel.app/qr/Evento5/${email}`}
                               >
                                 Ver bebidas compradas
                               </Link>
@@ -156,7 +156,7 @@ const Pagos = () => {
                           <img className='files-gallery-item img-fluid' alt="img" src={qr} width={200} />
                         </div>
                     : <div>
-                        <p style={{color: 'white', padding: '30px', marginTop: '15px', }}>Su pago fue rechazado, corrobore disponibilidad en su tarjeta y vuelva intentarlo, en su defecto contáctenos!</p>
+                        <p style={{color: 'white', padding: '30px',  }}>Su pago fue rechazado, corrobore disponibilidad en su tarjeta y vuelva intentarlo, en su defecto contáctenos!</p>
                     </div>
                       
                   }
