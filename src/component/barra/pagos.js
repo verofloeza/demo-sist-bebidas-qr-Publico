@@ -156,7 +156,7 @@ const Pagos = () => {
                           <img className='files-gallery-item img-fluid' alt="img" src={qr} width={200} />
                         </div>
                     : <div>
-                        <p style={{color: 'white', padding: '30px'}}>Su pago fue rechazado, corrobore disponibilidad en su tarjeta y vuelva intentarlo, en su defecto contáctenos!</p>
+                        <p style={{color: 'white', padding: '30px', margin-top: '15px'}}>Su pago fue rechazado, corrobore disponibilidad en su tarjeta y vuelva intentarlo, en su defecto contáctenos!</p>
                     </div>
                       
                   }
