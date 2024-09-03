@@ -135,11 +135,11 @@ const Pagos = () => {
                        ? 
                         <Container>
                           <Row>
-                            <Col sm='12'><p style={{color: 'white'}}>Gracias por su compra! Tu Qr de pedidos, queda guardado en tus pedidos, para que puedas utilizarlo cuando retiras tus bebidas durante el evento!</p> </Col>
-                            <Col sm='6' >
+                            <Col sm='12'><p style={{color: 'white', padding: '30px'}}>Gracias por su compra! Tu Qr de pedidos, queda guardado en tus pedidos, para que puedas utilizarlo cuando retiras tus bebidas durante el evento!</p> </Col>
+                            <Col sm='12' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
                               <img className='files-gallery-item img-fluid' alt="img" src={qr} width={200} />
                             </Col>
-                            <Col sm='6'>
+                            <Col sm='12' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
                               <Link 
                                 className="cart-btn-transform btn btn-primary"
                                 to={`http://localhost:3001/qr/Evento1/${email}`}
@@ -152,11 +152,11 @@ const Pagos = () => {
                         </Container>
                     
                       : <div>
-                          <p style={{color: 'white'}}>Gracias por su compra! su pago queda pendiente, podráutilizar el qr una vez que se regularice su pago!</p>
+                          <p style={{color: 'white', padding: '30px'}}>Gracias por su compra! su pago queda pendiente, podráutilizar el qr una vez que se regularice su pago!</p>
                           <img className='files-gallery-item img-fluid' alt="img" src={qr} width={200} />
                         </div>
                     : <div>
-                        <p style={{color: 'white'}}>Su pago fue rechazado, corrobore disponibilidad en su tarjeta y vuelva intentarlo, en su defecto contáctenos!</p>
+                        <p style={{color: 'white', padding: '30px'}}>Su pago fue rechazado, corrobore disponibilidad en su tarjeta y vuelva intentarlo, en su defecto contáctenos!</p>
                     </div>
                       
                   }

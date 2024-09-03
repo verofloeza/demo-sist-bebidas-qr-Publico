@@ -43,7 +43,6 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
 
       function handleSignIn() {
         const provider = new GoogleAuthProvider();
-    
         signInWithPopup(auth, provider)
           .then((result) => {
             setUser(result.user);
@@ -172,13 +171,7 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
               ? <Col sm='12'>
                   <Form className="theme-form">
                         <FormGroup className="row">
-                          <Label
-                            className="col-sm-3 form-label col-form-label"
-                            htmlFor="inputEmail3"
-                          >
-                            Email
-                          </Label>
-                          <Col sm="9">
+                          <Col sm="12">
                             <Input
                               className="form-control btn-pill"
                               type="email"
@@ -188,13 +181,7 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
                           </Col>
                         </FormGroup>
                         <FormGroup className="row">
-                          <Label
-                            className="col-sm-3 form-label col-form-label"
-                            htmlFor="inputPassword3"
-                          >
-                            Contraseña
-                          </Label>
-                          <Col sm="9">
+                          <Col sm="12">
                             <Input
                               className="form-control btn-pill"
                               type="password"
@@ -218,13 +205,7 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
                : <Col sm='12'>
                   <Form className="theme-form">
                         <FormGroup className="row">
-                          <Label
-                            className="col-sm-3 form-label col-form-label"
-                            htmlFor="inputEmail3"
-                          >
-                            Email
-                          </Label>
-                          <Col sm="9">
+                          <Col sm="12">
                             <Input
                               className="form-control btn-pill"
                               type="email"

@@ -145,13 +145,7 @@ const ModalLoginHead = ({modal, toggle, header}) => {
             <Col sm='12'>
                 <Form className="theme-form">
                       <FormGroup className="row">
-                        <Label
-                          className="col-sm-3 form-label col-form-label"
-                          htmlFor="inputName3"
-                        >
-                          Nombre Completo
-                        </Label>
-                        <Col sm="9">
+                        <Col sm="12">
                           <Input
                             className="form-control btn-pill"
                             type="text"
@@ -161,13 +155,7 @@ const ModalLoginHead = ({modal, toggle, header}) => {
                         </Col>
                       </FormGroup>
                       <FormGroup className="row">
-                        <Label
-                          className="col-sm-3 form-label col-form-label"
-                          htmlFor="inputEmail3"
-                        >
-                          Email
-                        </Label>
-                        <Col sm="9">
+                        <Col sm="12">
                           <Input
                             className="form-control btn-pill"
                             type="email"
@@ -177,13 +165,7 @@ const ModalLoginHead = ({modal, toggle, header}) => {
                         </Col>
                       </FormGroup>
                       <FormGroup className="row">
-                        <Label
-                          className="col-sm-3 form-label col-form-label"
-                          htmlFor="inputPassword3"
-                        >
-                          Contraseña
-                        </Label>
-                        <Col sm="9">
+                        <Col sm="12">
                           <Input
                             className="form-control btn-pill"
                             type="password"
@@ -193,13 +175,7 @@ const ModalLoginHead = ({modal, toggle, header}) => {
                         </Col>
                       </FormGroup>
                       <FormGroup className="row">
-                        <Label
-                          className="col-sm-3 form-label col-form-label"
-                          htmlFor="inputPassword3"
-                        >
-                          Teléfono
-                        </Label>
-                        <Col sm="9">
+                        <Col sm="12">
                           <Input
                             className="form-control btn-pill"
                             type="number"
