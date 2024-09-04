@@ -10,7 +10,7 @@ import { Container } from 'react-trello';
 import { ModalTitle } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const ModalLoginHead = ({modal, toggle, header}) => {
+const ModalLoginHead = ({modal, toggle, header, toggleIn}) => {
     const dispatch = useDispatch();
     const history = useNavigate();
     const userF = useSelector((state) => state.login.user)
@@ -50,6 +50,7 @@ const ModalLoginHead = ({modal, toggle, header}) => {
             getCarts(result.user.displayName, result.user.phoneNumber, result.user.email)
             
               toggle()
+              toggleIn()
             
           })
           .catch((error) => {
@@ -125,6 +126,11 @@ const ModalLoginHead = ({modal, toggle, header}) => {
       
         
       }
+
+  const handleClose = () => {
+    toggle()
+    toggleIn()
+  }
   return (
     <Modal isOpen={modal} toggle={toggle}>
       <ModalHeader toggle={toggle}>
@@ -195,7 +201,7 @@ const ModalLoginHead = ({modal, toggle, header}) => {
           
       </ModalBody>
       <ModalFooter style={{display: "flex", justifyContent: "center", alignItems: "center", }}>
-        <Button color="primary btn-pill" onClick={toggle}>Cerrar</Button>
+        <Button color="primary btn-pill" onClick={handleClose}>Cerrar</Button>
       </ModalFooter>
     </Modal>
   )

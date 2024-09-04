@@ -5,6 +5,7 @@ import { addDoc, collection, getDocs, limit, orderBy, query, where } from 'fireb
 import { auth, db } from "../../data/firebase/firebase";
 import { getUser, signup } from "../../redux/actions/login.actions";
 import { useDispatch, useSelector } from "react-redux";
+import ModalRegistroHead from '../componentProducts/ModalRegistroHead';
 
 import { Container } from 'react-trello';
 import { ModalTitle } from 'react-bootstrap';
@@ -22,6 +23,7 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
     const [ recoverPass, setRecoverPass ] = useState(false)
     const [ message, setMessage ] = useState('');
     const [emailRecorve, setEmailRecorve] = useState('');
+    const [modal, setModal] = useState(false);
 
     useEffect(()=>{
         
@@ -40,6 +42,10 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
      
                 
       },[])
+
+      const toggle = () => { 
+        setModal(!modal)
+      };
 
       function handleSignIn() {
         const provider = new GoogleAuthProvider();
@@ -237,8 +243,11 @@ const ModalLoginHead = ({modalIn, toggleIn, header}) => {
           
       </ModalBody>
       <ModalFooter style={{display: "flex", justifyContent: "center", alignItems: "center", }}>
+        <p>No estas registrado?</p>
+        <Button color="primary btn-pill" onClick={toggle}>Registrarse</Button>
         <Button color="primary btn-pill" onClick={toggleIn}>Cerrar</Button>
       </ModalFooter>
+      <ModalRegistroHead  modal={modal} toggle={toggle} header={'header'} toggleIn={toggleIn}/>
     </Modal>
   )
 

@@ -93,7 +93,7 @@ const Header = (props) => {
               </div>
           </div>
           <div className="nav-right col pull-right right-menu">
-            <ul className="nav-menus">
+            <ul className="nav-menus d-flex flex-column flex-lg-row">
               <li></li>
               <li>
                 <Link to={`/bebidas/${evento}`} style={{color: 'white'}}>
@@ -130,9 +130,9 @@ const Header = (props) => {
                             <li className="buttonMenu">
                               <button onClick={toggleIn} className="pull-left btn btn-primary">Iniciar sesión</button>
                             </li>
-                            <li className="buttonMenu">
+                            {/* <li className="buttonMenu">
                               <button onClick={toggle} className="pull-left btn btn-primary">Registrarme</button> 
-                            </li>
+                            </li> */}
                           </div>
                           
                           
